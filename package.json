@@ -1,0 +1,64 @@
+{
+    "name": "TsORM",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/index.js",
+    "scripts": {
+        "start": "npm run build && npm run start:raw",
+        "start:raw": "cross-env TZ=UTC NODE_PATH=./build node build/index.js",
+        "inspect": "cross-env TZ=UTC NODE_PATH=./build node --inspect build/index.js",
+        "build": "tsc",
+        "lint": "eslint --cache --ext .js,.ts src/",
+        "test": "nyc --reporter=text yarn mocha",
+        "test:ci": "nyc --reporter=lcov --reporter=text yarn mocha",
+        "mocha": "npm run build && cross-env NODE_ENV=test NODE_PATH=.:./src:./build mocha -r ts-node/register --project test/tsconfig.json src/utils/index.ts test/helpers/chai.ts test/unit/index.ts test/**/*.test.ts --exit",
+        "mocha:unsafe": "npm run build && cross-env NODE_ENV=test NODE_PATH=.:./src:./build mocha -r ts-node/register/transpile-only --project test/tsconfig.json src/utils/index.ts test/unit/index.ts test/**/*.test.ts --exit"
+    },
+    "nyc": {
+        "extends": "@istanbuljs/nyc-config-typescript",
+        "all": true,
+        "check-coverage": false
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/chalk": "^2.2.0",
+        "@types/yargs": "^15.0.5",
+        "dotenv": "^8.2.0",
+        "eslint-plugin-babel": "^5.3.1",
+        "eslint-plugin-import": "^2.20.1",
+        "express": "^4.17.1",
+        "pg": "^8.2.1",
+        "reflect-metadata": "^0.1.13",
+        "sofa-api": "^0.7.0",
+        "typeorm": "^0.2.22",
+        "typescript": "^3.9.7",
+        "yargonaut": "^1.1.4",
+        "yargs": "^15.4.1"
+    },
+    "devDependencies": {
+        "@istanbuljs/nyc-config-typescript": "^1.0.1",
+        "@types/chai": "^4.2.9",
+        "@types/chai-as-promised": "^7.1.2",
+        "@types/faker": "^4.1.12",
+        "@types/mocha": "^7.0.1",
+        "@types/node": "^14.0.27",
+        "@types/uuid": "^3.4.6",
+        "@typescript-eslint/eslint-plugin": "^2.7.0",
+        "@typescript-eslint/parser": "^2.7.0",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "chai-exclude": "^2.0.2",
+        "chalk": "^4.1.0",
+        "cross-env": "^6.0.3",
+        "eslint": "^6.6.0",
+        "faker": "^4.1.0",
+        "mocha": "^7.0.1",
+        "nyc": "^15.0.0",
+        "randexp": "^0.5.3",
+        "ts-node": "^8.6.2"
+    },
+    "eslintIgnore": [
+        "build/*"
+    ]
+}

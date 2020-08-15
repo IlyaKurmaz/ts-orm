@@ -1,0 +1,98 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
+    "env": {
+        "node": true,
+        "browser": true,
+        "es6": true,
+        "mocha": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint/eslint-plugin",
+        "babel",
+        "import"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": [
+                    "src",
+                    "."
+                ]
+            }
+        }
+    },
+    "rules": {
+        "indent": [
+            "warn",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "quotes": [
+            "warn",
+            "double",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "varsIgnorePattern": "(_[a-zA-Z]|unused|type)",
+                "argsIgnorePattern": "(_[a-zA-Z]|unused|type)",
+                "args": "after-used"
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-this-alias": "off",
+        "require-atomic-updates": "off",
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "babel/semi": 1,
+        // Custom rules,
+        "no-return-await": "error",
+        "space-before-blocks": "warn",
+        "complexity": [
+            "error",
+            11
+        ],
+        "eqeqeq": "error",
+        "max-classes-per-file": [
+            "error",
+            1
+        ],
+        "no-else-return": "warn",
+        "no-unused-labels": "error",
+        "no-useless-return": "error",
+        "yoda": "error",
+        "curly": [
+            "error",
+            "multi-or-nest"
+        ],
+        "import/named": "off",
+        "import/namespace": [
+            "warn",
+            {
+                "allowComputed": true
+            }
+        ]
+    }
+}
